@@ -8,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AnimalProductsRepository extends JpaRepository<AnimalProducts,Long> {
-    List<AnimalProducts> getAll();
 
-    void delete(AnimalProducts animalProducts);
 }

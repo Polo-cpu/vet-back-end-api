@@ -2,35 +2,36 @@ package com.atilla.vetApp.VetApplication.modules.entities;
 
 import lombok.*;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
 
+@Getter
 @Data
 @Entity
-@Getter
+@ToString
 @Table(name = "animal")
 public class Animal {
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Column(name = "Animal Type")
+    @Id
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "animal_type")
     private String animalType;
-    @Column(name = "Animal Name")
+    @Column(name = "animal_name")
     private String animalName;
-    @Column(name = "Owner Name")
+    @Column(name = "owner_name")
     private String ownerName;
-    @Column(name = "Animal Age")
+    @Column(name = "animal_age")
     private String animalAge;
-    @Column(name = "Animal Diseases")
+    @Column(name = "animal_diseases")
     private String animalDiseases;
-    @Column(name = "Animal Vaccinations")
-    private Vaccinations vaccinations;
-    @Column(name = "Animal Operations")
-    private Operations operation;
-    @Column(name = "Last Inspection Day")
+    @Column(name = "animal_vaccinations")
+    private String vaccinations;
+    @Column(name = "animal_operations")
+    private String operation;
+    @Column(name = "last_inspection_day")
     private String lastInspectionDay;
-    public Animal(long id, String animalType, String animalName, String animalAge, String animalDiseases, Vaccinations vaccinations, Operations operation, String lastInspectionDay,String ownerName) {
+
+    public Animal(Long id, String animalType, String animalName, String ownerName, String animalAge, String animalDiseases, String vaccinations, String operation, String lastInspectionDay) {
         this.id = id;
         this.animalType = animalType;
         this.animalName = animalName;
@@ -41,10 +42,11 @@ public class Animal {
         this.operation = operation;
         this.lastInspectionDay = lastInspectionDay;
     }
-    public Animal() {
+    public Animal(){
+
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,6 +58,10 @@ public class Animal {
         this.animalName = animalName;
     }
 
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
     public void setAnimalAge(String animalAge) {
         this.animalAge = animalAge;
     }
@@ -64,19 +70,18 @@ public class Animal {
         this.animalDiseases = animalDiseases;
     }
 
-    public void setVaccinations(Vaccinations vaccinations) {
+    public void setVaccinations(String vaccinations) {
         this.vaccinations = vaccinations;
     }
 
-    public void setOperation(Operations operation) {
+    public void setOperation(String operation) {
         this.operation = operation;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
     }
 
     public void setLastInspectionDay(String lastInspectionDay) {
         this.lastInspectionDay = lastInspectionDay;
     }
 }
+
+
+

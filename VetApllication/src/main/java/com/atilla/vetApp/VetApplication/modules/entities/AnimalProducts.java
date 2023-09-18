@@ -4,40 +4,21 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
 @Data
 @Entity
-
-
-@Table(name = "animal product")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "animal_product")
 public class AnimalProducts {
+    @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Column(name = "Animal Type")
-    private String animalType;
-    @Column(name = "Product")
+    private Long id;
+    @Column(name = "animal_types")
+    private String animalTypes;
+    @Column(name = "product")
     private String product;
 
-    public AnimalProducts() {
 
-    }
-
-    public AnimalProducts(long id, String animalName, String product) {
-        this.id = id;
-        this.animalType = animalName;
-        this.product = product;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setAnimalType(String animaltype) {
-        this.animalType = animaltype;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
 }

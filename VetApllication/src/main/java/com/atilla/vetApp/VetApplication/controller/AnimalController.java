@@ -9,27 +9,20 @@ import com.atilla.vetApp.VetApplication.service.VaccinationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/animal")
 public class AnimalController {
+
     @Autowired
     private AnimalService animalService;
-    private AnimalProductsService animalProductsService;
-    private OperationsService operationsService;
-    private VaccinationsService vaccinationsService;
-
-    public AnimalController(AnimalService animalService,
-                            AnimalProductsService animalProductsService,
-                            OperationsService operationsService,
-                            VaccinationsService vaccinationsService){
-        this.animalProductsService = animalProductsService;
+    public AnimalController(AnimalService animalService
+                           ){
         this.animalService = animalService;
-        this.operationsService = operationsService;
-        this.vaccinationsService = vaccinationsService;
+
     }
     @GetMapping("/all")
     public ResponseEntity<List<Animal>> getAllAnimals(){
@@ -41,19 +34,14 @@ public class AnimalController {
         Animal animalById = animalService.animalGetById(id);
         return new ResponseEntity<Animal>(animalById,HttpStatus.OK);
     }
-    @GetMapping("/get-owner-name/{name}")
-    public ResponseEntity<List<Animal>> getAnimalsByOwnerName(@PathVariable("name") String name){
-        List<Animal> animals = animalService.getAnimalsByOwnerName(name);
-        return new ResponseEntity<List<Animal>>(animals,HttpStatus.OK);
-    }
     @PostMapping("/save")
     public ResponseEntity<Animal> addAnimal(@RequestBody AnimalDTO animalDTO ){
         Animal addAnimal = animalService.addAnimal(animalDTO);
         return new ResponseEntity<Animal>(addAnimal,HttpStatus.CREATED);
     }
-    @DeleteMapping("/delete/{name}")
-    public ResponseEntity<Void> deleteAnimalById(@PathVariable("name") String name){
-        animalService.deleteAnimalByName(name);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteAnimalById(@PathVariable("id") Long id){
+        animalService.deleteById(id);
        return new  ResponseEntity<Void>(HttpStatus.OK);
     }
 

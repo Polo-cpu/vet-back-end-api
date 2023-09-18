@@ -2,7 +2,9 @@ package com.atilla.vetApp.VetApplication.modules.entities;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 @Data
 @Entity
@@ -10,8 +12,12 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Table(name = "vaccinations")
 public class Vaccinations {
-    private long id;
+    @Id
+    @Column(name="id")
+    private Long id;
+    @Column(name="vaccination_type")
     private String vaccinationType;
+    @Column(name="last_vaccination_day")
     private String lastVaccinationDay;
 
 
