@@ -9,7 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 
 public class AnimalProductsDTO {
-    private long id;
-    private String animalTypes;
-    private String product;
+    private Long id;
+    private String animalTypesDTO;
+    private String productDTO;
+    private double priceDTO;
 }

@@ -9,13 +9,13 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface AnimalSafeMapper {
     @Mappings({
-            @Mapping(source = "animalType",target = "animalType"),
-            @Mapping(source = "animalName",target = "animalName"),
-            @Mapping(source = "ownerName",target = "ownerName"),
-            @Mapping(source = "animalAge",target = "animalAge"),
-            @Mapping(source = "animalDiseases",target = "animalDiseases"),
-            @Mapping(source = "vaccinations",target = "vaccinations"),
-            @Mapping(source = "operation",target = "operation"),
-            @Mapping(source = "lastInspectionDay",target = "lastInspectionDay")})
+            @Mapping(source = "animalTypeDTO",target = "animalType"),
+            @Mapping(source = "animalNameDTO",target = "animalName"),
+            @Mapping(source = "ownerNameDTO",target = "ownerName"),
+            @Mapping(source = "animalAgeDTO",target = "animalAge"),
+            @Mapping(source = "animalDiseasesDTO",target = "animalDiseases"),
+            @Mapping(source = "vaccinationsDTO",target = "vaccinations"),
+            @Mapping(source = "operationDTO",target = "operation"),
+            @Mapping(source = "lastInspectionDayDTO",target = "lastInspectionDay")})
     public Animal animalDTO2Animal(AnimalDTO animalDTO);
 }

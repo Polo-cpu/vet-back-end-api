@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping("/api/animal")
 public class AnimalController {
 
-    @Autowired
-    private AnimalService animalService;
-    public AnimalController(AnimalService animalService
-                           ){
+
+    private final AnimalService animalService;
+
+    public AnimalController(AnimalService animalService){
         this.animalService = animalService;
 
     }
@@ -30,8 +30,8 @@ public class AnimalController {
         return new ResponseEntity<List<Animal>>(animals, HttpStatus.OK);
     }
     @GetMapping("/get/{id}")
-    public ResponseEntity<Animal> getAnimalById(@PathVariable("id") long id){
-        Animal animalById = animalService.animalGetById(id);
+    public ResponseEntity<Animal> getAnimalById(@PathVariable("id") Long id){
+        Animal animalById = animalService.getById(id);
         return new ResponseEntity<Animal>(animalById,HttpStatus.OK);
     }
     @PostMapping("/save")
@@ -42,7 +42,7 @@ public class AnimalController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAnimalById(@PathVariable("id") Long id){
         animalService.deleteById(id);
-       return new  ResponseEntity<Void>(HttpStatus.OK);
+       return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
 
